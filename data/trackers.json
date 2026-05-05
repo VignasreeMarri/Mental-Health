@@ -1,0 +1,335 @@
+{
+  "moods": [
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Stressed",
+      "date": "2026-03-26T06:34:33.306Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Stressed",
+      "date": "2026-03-26T06:34:35.034Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Neutral",
+      "date": "2026-03-26T06:36:16.707Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Stressed",
+      "date": "2026-03-26T06:36:20.785Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Stressed",
+      "date": "2026-03-26T06:47:06.026Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Sad",
+      "date": "2026-03-26T06:47:10.572Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Neutral",
+      "date": "2026-03-26T06:48:01.846Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Great",
+      "date": "2026-03-26T06:48:05.865Z"
+    },
+    {
+      "email": "sudeep@gmail.com",
+      "mood": "Stressed",
+      "date": "2026-03-26T06:51:10.041Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Neutral",
+      "date": "2026-03-26T06:52:54.853Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Stressed",
+      "date": "2026-03-26T06:52:57.907Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Sad",
+      "date": "2026-03-26T06:52:59.711Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Good",
+      "date": "2026-03-26T06:53:02.000Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Great",
+      "date": "2026-03-26T06:53:02.763Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Stressed",
+      "date": "2026-03-26T06:53:04.467Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Neutral",
+      "date": "2026-03-26T06:53:06.927Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Stressed",
+      "date": "2026-03-26T06:53:07.938Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Stressed",
+      "date": "2026-03-26T10:08:43.405Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Great",
+      "date": "2026-03-26T12:34:16.959Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Good",
+      "date": "2026-03-26T12:34:19.213Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Great",
+      "date": "2026-03-26T13:18:34.381Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Great",
+      "date": "2026-03-26T13:21:33.128Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Great",
+      "date": "2026-03-26T13:25:51.292Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Great",
+      "date": "2026-03-26T14:37:37.344Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Great",
+      "date": "2026-03-26T15:27:29.336Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Great",
+      "date": "2026-03-27T03:48:41.221Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Good",
+      "date": "2026-03-27T03:48:48.209Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Good",
+      "date": "2026-03-27T03:49:51.604Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Neutral",
+      "date": "2026-03-27T03:50:28.075Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Great",
+      "date": "2026-03-27T04:07:35.150Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Neutral",
+      "date": "2026-03-27T04:08:33.840Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Neutral",
+      "date": "2026-03-27T04:14:54.509Z"
+    },
+    {
+      "email": "abc@gmail.com",
+      "mood": "Neutral",
+      "date": "2026-03-28T04:43:18.297Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Good",
+      "date": "2026-03-28T09:31:48.067Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Good",
+      "date": "2026-03-28T09:31:58.774Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Sad",
+      "date": "2026-03-28T09:32:05.851Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Good",
+      "date": "2026-03-28T09:50:55.254Z"
+    },
+    {
+      "email": "ellen@test.com",
+      "mood": "Stressed",
+      "date": "2026-03-31T04:47:29.439Z"
+    },
+    {
+      "email": "ellen@test.com",
+      "mood": "Great",
+      "date": "2026-03-31T04:47:36.939Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Great",
+      "date": "2026-03-31T05:13:16.041Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Anxious",
+      "date": "2026-03-31T05:40:37.634Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Stressed",
+      "date": "2026-03-31T05:41:43.044Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Angry",
+      "date": "2026-03-31T05:49:50.654Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Overwhelmed",
+      "date": "2026-03-31T05:50:42.956Z"
+    },
+    {
+      "email": null,
+      "mood": "Anxious",
+      "date": "2026-03-31T06:45:36.229Z"
+    },
+    {
+      "email": "test@example.com",
+      "mood": "Good",
+      "date": "2026-03-31T10:59:26.158Z"
+    },
+    {
+      "email": "test@example.com",
+      "mood": "Great",
+      "date": "2026-03-31T11:00:08.148Z"
+    },
+    {
+      "email": "vignesh@example.com",
+      "mood": "Great",
+      "date": "2026-03-31T11:08:16.975Z"
+    },
+    {
+      "email": "vignesh@example.com",
+      "mood": "Good",
+      "date": "2026-03-31T11:10:47.497Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Overwhelmed",
+      "date": "2026-04-01T08:13:12.805Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Angry",
+      "date": "2026-04-09T05:04:52.200Z"
+    },
+    {
+      "email": "vigna@example.com",
+      "mood": "Great",
+      "date": "2026-04-09T06:02:10.430Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Great",
+      "date": "2026-05-05T05:48:01.773Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "mood": "Great",
+      "date": "2026-05-05T05:48:13.454Z"
+    }
+  ],
+  "selfHelp": [
+    {
+      "email": "vignasree07@gmail.com",
+      "task": "Drank water",
+      "completedAt": "2026-03-26T06:35:51.608Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "task": "Deep breathing",
+      "completedAt": "2026-03-26T06:35:51.621Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "task": "Journaling",
+      "completedAt": "2026-03-26T06:36:31.428Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "task": "Drank water",
+      "completedAt": "2026-03-26T06:48:12.772Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "task": "Deep breathing",
+      "completedAt": "2026-03-26T06:48:12.778Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "task": "Drank water",
+      "completedAt": "2026-03-26T06:53:20.412Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "task": "Deep breathing",
+      "completedAt": "2026-03-26T06:53:20.435Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "task": "Outdoor walk",
+      "completedAt": "2026-03-26T06:53:20.446Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "task": "Drank water",
+      "completedAt": "2026-03-26T07:52:45.796Z"
+    }
+  ],
+  "feedback": [
+    {
+      "email": "vignasree07@gmail.com",
+      "rating": "5",
+      "comment": "great",
+      "date": "2026-03-26T06:53:36.353Z"
+    },
+    {
+      "email": "vignasree07@gmail.com",
+      "rating": "5",
+      "comment": "nice",
+      "date": "2026-03-26T08:47:51.806Z"
+    }
+  ]
+}

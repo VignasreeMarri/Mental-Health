@@ -1,0 +1,48 @@
+[
+  {
+    "id": 1774506858244,
+    "name": "Marri Vigna Sree",
+    "email": "vignasree07@gmail.com",
+    "password": "123456"
+  },
+  {
+    "id": 1774507845117,
+    "name": "sudeep",
+    "email": "sudeep@gmail.com",
+    "password": "sudeep"
+  },
+  {
+    "id": 1774508846324,
+    "name": "sudeep",
+    "email": "abc@gmail.com",
+    "password": "123456"
+  },
+  {
+    "id": 1774931932039,
+    "name": "Ellen",
+    "email": "ellen@test.com",
+    "password": "password123",
+    "joinedAt": "2026-03-31T04:38:52.039Z"
+  },
+  {
+    "id": 1774941465401,
+    "name": "Test User",
+    "email": "test@example.com",
+    "password": "password123",
+    "joinedAt": "2026-03-31T07:17:45.401Z"
+  },
+  {
+    "id": 1774955276304,
+    "name": "Vignesh",
+    "email": "vignesh@example.com",
+    "password": "password123",
+    "joinedAt": "2026-03-31T11:07:56.304Z"
+  },
+  {
+    "id": 1775714509831,
+    "name": "Vigna",
+    "email": "vigna@example.com",
+    "password": "password",
+    "joinedAt": "2026-04-09T06:01:49.831Z"
+  }
+]

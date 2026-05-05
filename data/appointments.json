@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1774538805739,
+    "email": "vignasree07@gmail.com",
+    "doctorName": "Dr. Anand Balan",
+    "specialty": "Adolescent & Addiction Health",
+    "slot": "Join Now (Live)",
+    "sessionDate": "2026-03-26T15:26:45.739Z",
+    "status": "Completed"
+  },
+  {
+    "id": 1774583342744,
+    "email": "vignasree07@gmail.com",
+    "doctorName": "Dr. Anand Balan",
+    "specialty": "Adolescent & Addiction Health",
+    "slot": "Join Now (Live)",
+    "sessionDate": "2026-03-27T03:49:02.744Z",
+    "status": "Completed"
+  },
+  {
+    "id": 1774583410588,
+    "email": "vignasree07@gmail.com",
+    "doctorName": "Dr. Anand Balan",
+    "specialty": "Adolescent & Addiction Health",
+    "slot": "Join Now (Live)",
+    "sessionDate": "2026-03-27T03:50:10.588Z",
+    "status": "Completed"
+  },
+  {
+    "id": 1774583927087,
+    "email": "abc@gmail.com",
+    "doctorName": "Dr. D Archanaa",
+    "specialty": "Anxiety & Bipolar Disorder",
+    "slot": "Join Now (Live)",
+    "sessionDate": "2026-03-27T03:58:47.087Z",
+    "status": "Completed"
+  },
+  {
+    "id": 1774584234228,
+    "email": "vignasree07@gmail.com",
+    "doctorName": "Dr. Anand Balan",
+    "specialty": "Adolescent & Addiction Health",
+    "slot": "Join Now (Live)",
+    "sessionDate": "2026-03-27T04:03:54.228Z",
+    "status": "Completed"
+  },
+  {
+    "id": 1774584502446,
+    "email": "vignasree07@gmail.com",
+    "doctorName": "Dr. Anand Balan",
+    "specialty": "Adolescent & Addiction Health",
+    "slot": "Join Now (Live)",
+    "sessionDate": "2026-03-27T04:08:22.446Z",
+    "status": "Completed"
+  },
+  {
+    "id": 1774584908840,
+    "email": "vignasree07@gmail.com",
+    "doctorName": "Dr. D Archanaa",
+    "specialty": "Anxiety & Bipolar Disorder",
+    "slot": "Join Now (Live)",
+    "sessionDate": "2026-03-27T04:15:08.840Z",
+    "status": "Completed"
+  },
+  {
+    "id": 1774673056387,
+    "email": "abc@gmail.com",
+    "doctorName": "Dr. Esther Suresh",
+    "specialty": "Marital & Relationship Stress",
+    "slot": "Join Now (Live)",
+    "sessionDate": "2026-03-28T04:44:16.387Z",
+    "status": "Completed"
+  },
+  {
+    "id": 1775796403682,
+    "email": "vignasree07@gmail.com",
+    "doctorName": "Dr. Ananya Das",
+    "specialty": "Student Counseling",
+    "slot": "04:30 PM",
+    "sessionDate": "2026-04-10T04:46:43.682Z",
+    "status": "Completed"
+  },
+  {
+    "id": 1775796403688,
+    "email": "vignasree07@gmail.com",
+    "doctorName": "Dr. Ananya Das",
+    "specialty": "Student Counseling",
+    "slot": "04:30 PM",
+    "sessionDate": "2026-04-10T04:46:43.688Z",
+    "status": "Completed"
+  },
+  {
+    "id": 1775800251156,
+    "email": "vignasree07@gmail.com",
+    "doctorName": "Dr. Aditi Sharma",
+    "specialty": "Anxiety & Stress",
+    "slot": "06:00 PM",
+    "sessionDate": "2026-04-10T05:50:51.156Z",
+    "status": "Completed"
+  },
+  {
+    "id": 1777960119584,
+    "email": "vignasree07@gmail.com",
+    "doctorName": "Dr. Rajesh Iyer",
+    "specialty": "Depression & Mood",
+    "slot": "02:00 PM",
+    "sessionDate": "2026-05-05T05:48:39.584Z",
+    "status": "Completed"
+  }
+]

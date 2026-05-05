@@ -1,0 +1,14 @@
+[
+  {
+    "email": "vignesh@example.com",
+    "role": "user",
+    "content": "Give me a quick breathing exercise.",
+    "timestamp": "2026-04-06T09:18:05.386Z"
+  },
+  {
+    "email": "vignesh@example.com",
+    "role": "bot",
+    "content": "It's great that you are reaching out. Remember to be kind to yourself today.",
+    "timestamp": "2026-04-06T09:18:05.387Z"
+  }
+]

@@ -1,0 +1,883 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline';">
+    <title>MindSpace - Your Mental Wellness Companion</title>
+    <meta name="description" content="A safe, confidential space for students to access mental health resources, counseling services, and peer support - all in one place.">
+    <!-- Modern, clean Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Link to our stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Lucide Icons & Chart.js -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <!-- Emergency Support Modal -->
+    <div class="modal" id="emergencyModal">
+        <div class="modal-content" style="max-width: 500px; border-top: 5px solid #ff4d4d; padding: 2.5rem;">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <div style="width: 65px; height: 65px; background: #fff1f1; color: #ff4d4d; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                    <i data-lucide="alert-octagon" style="width: 32px; height: 32px;"></i>
+                </div>
+                <h3>Emergency Support</h3>
+                <p style="color: var(--text-secondary);">If you or someone you know is in immediate danger, please reach out to these verified helplines in India.</p>
+            </div>
+            
+            <div class="emergency-list" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <a href="tel:112" class="emergency-item primary-sos" style="display: flex; align-items: center; justify-content: space-between; padding: 1.2rem; background: #ff4d4d; color: white; border-radius: 16px; text-decoration: none; font-weight: 700; box-shadow: 0 4px 15px rgba(255, 77, 77, 0.3);">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <i data-lucide="phone-call"></i>
+                        <span>Immediate Emergency (Pan-India)</span>
+                    </div>
+                    <span>112</span>
+                </a>
+                
+                <a href="tel:9999666555" class="emergency-item" style="display: flex; align-items: center; justify-content: space-between; padding: 1.2rem; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 16px; text-decoration: none; color: var(--text-primary);">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <i data-lucide="heart" style="color: #ff4d4d;"></i>
+                        <div>
+                            <strong style="display: block;">Vandrevala Foundation</strong>
+                            <span style="font-size: 0.8rem; color: var(--text-secondary);">Mental Health Helpline (24/7)</span>
+                        </div>
+                    </div>
+                    <span style="font-weight: 600;">9999666555</span>
+                </a>
+
+                <a href="tel:18005990019" class="emergency-item" style="display: flex; align-items: center; justify-content: space-between; padding: 1.2rem; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: 16px; text-decoration: none; color: var(--text-primary);">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <i data-lucide="stethoscope" style="color: #4361ee;"></i>
+                        <div>
+                            <strong style="display: block;">Kiran Helpline</strong>
+                            <span style="font-size: 0.8rem; color: var(--text-secondary);">Govt Psychological Support</span>
+                        </div>
+                    </div>
+                    <span style="font-weight: 600;">1800-599-0019</span>
+                </a>
+            </div>
+            
+            <button class="close-modal-btn" id="closeEmergencyBtn" style="margin-top: 2rem; width: 100%; border: none; background: none; color: var(--text-secondary); cursor: pointer; font-size: 0.9rem; transition: 0.3s;">I understand, close protection</button>
+        </div>
+    </div>
+
+    <!-- User Profile & Settings Modal -->
+    <div class="modal" id="profileModal">
+        <div class="modal-content" style="max-width: 500px; padding: 0; overflow: hidden; border-radius: 28px;">
+            <div id="profileView" class="profile-main-view" style="padding: 2.5rem;">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <div style="width: 85px; height: 85px; background: var(--accent-gradient); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; box-shadow: 0 8px 25px rgba(67, 97, 238, 0.2);">
+                        <i data-lucide="user" style="width: 40px; height: 40px;"></i>
+                    </div>
+                    <h3 id="profileName" style="font-size: 1.5rem; margin-bottom: 0.3rem;">User Name</h3>
+                    <p id="profileEmail" style="color: var(--text-secondary); margin-bottom: 0.5rem;">user@example.com</p>
+                    <span id="joinedDateText" style="display: inline-block; padding: 0.4rem 1rem; background: var(--bg-primary); border-radius: 50px; font-size: 0.8rem; color: var(--accent-primary); font-weight: 500;">Member since: ...</span>
+                </div>
+
+                <div class="profile-stats-grid" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 2rem;">
+                    <div style="background: var(--bg-primary); padding: 1.2rem 1rem; border-radius: 18px; text-align: center; border: 1px solid var(--border-color);">
+                        <strong id="statMoods" style="display: block; font-size: 1.4rem; color: var(--accent-primary);">0</strong>
+                        <span style="font-size: 0.75rem; color: var(--text-secondary);">Mood Logs</span>
+                    </div>
+                    <div style="background: var(--bg-primary); padding: 1.2rem 1rem; border-radius: 18px; text-align: center; border: 1px solid var(--border-color);">
+                        <strong id="statTasks" style="display: block; font-size: 1.4rem; color: #2ecc71;">0</strong>
+                        <span style="font-size: 0.75rem; color: var(--text-secondary);">Self-Care</span>
+                    </div>
+                    <div style="background: var(--bg-primary); padding: 1.2rem 1rem; border-radius: 18px; text-align: center; border: 1px solid var(--border-color);">
+                        <strong id="statFeedback" style="display: block; font-size: 1.4rem; color: #f1c40f;">0</strong>
+                        <span style="font-size: 0.75rem; color: var(--text-secondary);">Feedback</span>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 1rem;">
+                    <button class="primary-btn" id="editProfileBtn" style="flex: 1; border-radius: 14px;">Edit Profile</button>
+                    <button class="secondary-btn" id="backProfileBtn" style="flex: 1; border-radius: 14px;">Close</button>
+                </div>
+                <button id="logoutBtnAlt" style="width: 100%; margin-top: 1rem; padding: 0.9rem; background: none; border: 1px solid #fee2e2; color: #ef4444; border-radius: 14px; font-weight: 600; cursor: pointer; transition: 0.3s;" onmouseover="this.style.background='#fef2f2'" onmouseout="this.style.background='none'">Sign Out</button>
+            </div>
+
+            <div id="profileEditView" style="display: none; padding: 2.5rem;">
+                <h3 style="margin-bottom: 0.5rem;">Manage Account</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;">Keep your information up to date.</p>
+                
+                <form id="editProfileForm">
+                    <div class="input-group" style="margin-bottom: 1.25rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Full Name</label>
+                        <input type="text" id="editNameInput" placeholder="Enter your name" required style="width: 100%; padding: 0.9rem 1.2rem; border-radius: 12px; border: 1px solid var(--border-color); background: var(--bg-primary); color: var(--text-primary);">
+                    </div>
+                    <div class="input-group" style="margin-bottom: 2rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Email Address</label>
+                        <input type="email" id="editEmailInput" placeholder="name@example.com" required style="width: 100%; padding: 0.9rem 1.2rem; border-radius: 12px; border: 1px solid var(--border-color); background: var(--bg-primary); color: var(--text-primary);">
+                    </div>
+                    
+                    <div style="display: flex; gap: 1rem;">
+                        <button type="submit" class="blue-btn" style="flex: 2; padding: 1rem; border-radius: 14px; font-weight: 600;">Save Changes</button>
+                        <button type="button" class="secondary-btn" id="cancelEditBtn" style="flex: 1; border-radius: 14px;">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mood Tracking Modal -->
+    <div class="modal" id="moodModal">
+        <div class="modal-content" style="max-width: 600px;">
+            <div id="moodSelectionStep">
+                <h3>How are you feeling today?</h3>
+                <p>Tracking your mood helps us provide better support.</p>
+                <div class="modal-moods">
+                    <button class="mood-btn-large" data-mood="Great">
+                        <div class="mood-img">ðŸ¤©</div>
+                        <span>Great</span>
+                    </button>
+                    <button class="mood-btn-large" data-mood="Good">
+                        <div class="mood-img">ðŸ˜Š</div>
+                        <span>Good</span>
+                    </button>
+                    <button class="mood-btn-large" data-mood="Neutral">
+                        <div class="mood-img">ðŸ˜</div>
+                        <span>Neutral</span>
+                    </button>
+                    <button class="mood-btn-large" data-mood="Anxious">
+                        <div class="mood-img">ðŸ˜°</div>
+                        <span>Anxious</span>
+                    </button>
+                    <button class="mood-btn-large" data-mood="Stressed">
+                        <div class="mood-img">ðŸ˜«</div>
+                        <span>Stressed</span>
+                    </button>
+                    <button class="mood-btn-large" data-mood="Sad">
+                        <div class="mood-img">ðŸ˜”</div>
+                        <span>Sad</span>
+                    </button>
+                    <button class="mood-btn-large" data-mood="Angry">
+                        <div class="mood-img">ðŸ˜¡</div>
+                        <span>Angry</span>
+                    </button>
+                    <button class="mood-btn-large" data-mood="Overwhelmed">
+                        <div class="mood-img">ðŸ¤¯</div>
+                        <span>Burnout</span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="moodResultsStep" style="display: none;">
+                <div class="mood-results-header">
+                    <h3 id="modalMoodTitle">Guidance for Your Mood</h3>
+                </div>
+                <div class="discovery-grid" id="modalResultsGrid">
+                    <!-- Results populated by JS -->
+                </div>
+                <div style="margin-top: 2rem; display: flex; gap: 1rem;">
+                    <button class="secondary-btn" id="backMoodBtn" style="flex: 1;">Change Mood</button>
+                    <button class="primary-btn" id="finishMoodBtn" style="flex: 1;">Got it</button>
+                </div>
+            </div>
+            
+            <button class="close-modal-btn" id="closeMoodModalBtn">
+                <i data-lucide="arrow-left" style="width: 16px; margin-right: 8px;"></i> Back to Home
+            </button>
+        </div>
+    </div>
+
+    <!-- Guided Breathing Modal -->
+    <div class="modal" id="breathingModal">
+        <div class="modal-content" style="max-width: 450px; text-align: center;">
+            <div class="breathing-view">
+                <h3>Breathe & Relax</h3>
+                <p>Follow the circle to find your rhythm.</p>
+                
+                <div class="breathing-container" style="margin: 3rem 0;">
+                    <div class="breathing-circle" id="breathingCircle"></div>
+                    <div class="breathing-text" id="breathingText">Ready?</div>
+                </div>
+
+                <div class="breathing-controls">
+                    <button class="primary-btn" id="startBreathingBtn" style="width: 100%;">Start Session</button>
+                </div>
+            </div>
+            <button class="close-modal-btn" id="closeBreathingModalBtn">Close</button>
+        </div>
+    </div>
+
+    <!-- Wellness Journal Modal -->
+    <div class="modal" id="journalModal">
+        <div class="modal-content" style="max-width: 600px;">
+            <h3>Express Your Thoughts</h3>
+            <p>Your journal is a private and safe space.</p>
+            
+            <div class="input-group" style="margin-top: 1.5rem;">
+                <label>Entry Title</label>
+                <input type="text" id="journalTitleInput" placeholder="How was your day?">
+            </div>
+            <div class="input-group" style="margin-top: 1.5rem;">
+                <label>Journal Content</label>
+                <textarea id="journalContentInput" placeholder="Start writing here..." style="min-height: 200px;"></textarea>
+            </div>
+
+            <button class="primary-btn" id="saveJournalBtn" style="width: 100%; margin-top: 2rem;">Save to Journal</button>
+            <button class="close-modal-btn" id="closeJournalModalBtn">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Quick Note Modal -->
+    <div class="modal" id="noteModal">
+        <div class="modal-content" style="max-width: 400px;">
+            <h3>New Quick Note</h3>
+            <div class="input-group">
+                <label>Title</label>
+                <input type="text" id="noteTitleInput" placeholder="Note Title">
+            </div>
+            <div class="input-group">
+                <label>Content</label>
+                <textarea id="noteContentInput" placeholder="Write something..." style="min-height: 120px;"></textarea>
+            </div>
+            <button class="primary-btn" id="saveNoteBtn" style="width: 100%; margin-top: 1.5rem;">Save Note</button>
+            <button class="close-modal-btn" id="closeNoteModalBtn">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Reminder Modal -->
+    <div class="modal" id="reminderModal">
+        <div class="modal-content" style="max-width: 400px;">
+            <h3>Set a Reminder</h3>
+            <div class="input-group">
+                <label>Reminder For</label>
+                <input type="text" id="reminderMessageInput" placeholder="e.g. Meditate">
+            </div>
+            <div class="input-group">
+                <label>When</label>
+                <input type="datetime-local" id="reminderTimeInput">
+            </div>
+            <button class="primary-btn" id="saveReminderBtn" style="width: 100%; margin-top: 1.5rem;">Set Reminder</button>
+            <button class="close-modal-btn" id="closeReminderModalBtn">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <header class="header">
+        <div class="top-emergency-bar">
+            <span>Feeling overwhelmed? There is help available.</span>
+            <button id="emergencyBtn">Emergency Contacts</button>
+        </div>
+        
+        <nav class="navbar" id="mainNavbar">
+            <div class="nav-brand">
+                <i data-lucide="brain" class="brand-icon" style="color: #4361ee;"></i>
+                <span>MindSpace</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#statistics">Statistics</a></li>
+                <li><a href="#feedback">Feedback</a></li>
+            </ul>
+            <div class="nav-extra">
+                <!-- Auth Buttons (Hidden when logged in) -->
+                <div id="loggedOutNav" style="display: flex; gap: 1rem; align-items: center;">
+                    <button class="nav-track-btn" id="guestTrackMoodBtn" style="padding: 0.7rem 1.2rem; border-radius: 50px; background: rgba(67, 97, 238, 0.1); color: #4361ee; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; transition: 0.3s; margin-right: 0.5rem;">
+                        <i data-lucide="heart" style="width: 18px;"></i> Track Your Mood
+                    </button>
+                    <button class="nav-auth-btn" id="openLoginBtn">Login</button>
+                    <button class="nav-auth-btn primary-auth" id="openSignupBtn">Register</button>
+                </div>
+                
+                <!-- User Controls -->
+                <div id="loggedInNav" style="display: none; align-items: center; gap: 1rem;">
+                    <button class="nav-icon-btn" id="themeToggleBtn" title="Theme Toggle">
+                        <i data-lucide="moon" id="themeIcon"></i>
+                    </button>
+                    <button class="nav-icon-btn" id="navChatBtn" title="Assistant Support">
+                        <i data-lucide="message-square"></i>
+                    </button>
+                    <button class="nav-icon-btn profile-nav-btn" id="profileBtn" title="My Wellness Profile">
+                        <i data-lucide="user"></i>
+                    </button>
+                    <button class="primary-btn btn-sm" id="navTrackMoodBtn" style="display: none;">Track Mood</button>
+                    <button class="profile-badge-btn" id="logoutBtn" title="Logout Session">
+                        <i data-lucide="log-out"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="landingView">
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <div class="hero-badge">Student Wellness Portal</div>
+                <h1 class="hero-main-title">Your Mental <span class="blue-gradient-text">Wellbeing Matters</span></h1>
+                <p class="hero-subtext">A safe, confidential space for students to access mental health resources, counseling services, and peer support - all in one place.</p>
+                <div class="hero-btn-group">
+                    <button class="blue-btn" id="getStartedBtnHero">Get Started</button>
+                    <a href="#learn-more" class="ghost-btn" id="exploreBtnHero" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">Learn More</a>
+                </div>
+                
+                <!-- Quick Stats -->
+                <div class="hero-stats-alt" style="display: flex; gap: 2rem; margin-top: 3rem;">
+                    <div class="stat-info-simple">
+                        <strong>Self-Kindness</strong>
+                        <p>Daily Practice</p>
+                    </div>
+                    <div class="stat-info-simple">
+                        <strong>Safe & Private</strong>
+                        <p>Confidential Space</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual-alt">
+                <div class="brain-visual-container">
+                    <img src="assets/brain-removebg-preview.png" alt="MindSpace Wellness" class="hero-brain-img">
+                    <div class="visual-decor-orb"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section" id="about" style="padding: 6rem 5%; text-align: center;">
+            <div class="container" style="max-width: 1000px; margin: 0 auto;">
+                <h2 class="section-title">About MindSpace</h2>
+                <div style="font-size: 1.2rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 3rem;">
+                    <p>MindSpace is a comprehensive digital ecosystem designed to empower students with the tools they need for mental resilience. Our platform combines cutting-edge AI support with clinical accessibility to provide a holistic approach to wellness.</p>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-top: 4rem;">
+                    <div style="padding: 2rem; background: white; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 1px solid #f0f0f0;">
+                         <i data-lucide="shield" style="width: 40px; height: 40px; color: var(--accent-primary); margin-bottom: 1.5rem;"></i>
+                         <h4>Confidential</h4>
+                         <p>Your privacy is our priority. All conversations and data are end-to-end encrypted.</p>
+                    </div>
+                    <div style="padding: 2rem; background: white; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 1px solid #f0f0f0;">
+                         <i data-lucide="users" style="width: 40px; height: 40px; color: var(--accent-primary); margin-bottom: 1.5rem;"></i>
+                         <h4>Community</h4>
+                         <p>Connect with peers and professionals who understand the unique challenges of student life.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services-section" id="services">
+            <h2 class="section-title">Our Specialized Services</h2>
+            <div class="services-grid">
+                <div class="service-card glass">
+                    <div class="service-icon chatbot"><i data-lucide="bot"></i></div>
+                    <h3>MindSpace AI</h3>
+                    <p>Instant, compassionate AI-driven counseling available 24/7 to listen and guide you.</p>
+                    <button class="service-action-btn" id="heroChatBtn">Start Chatting</button>
+                </div>
+                <div class="service-card glass">
+                    <div class="service-icon tracker"><i data-lucide="line-chart"></i></div>
+                    <h3>Mood Analytics</h3>
+                    <p>Advanced tracking and personalized insights based on your daily emotional patterns.</p>
+                    <button class="service-action-btn" id="openMoodModalBtn">Track Today</button>
+                </div>
+                <div class="service-card glass highlight-service">
+                    <div class="service-icon video"><i data-lucide="video"></i></div>
+                    <h3>Psychiatric Consultation</h3>
+                    <p>Book a private video session with verified psychiatrists matched to your specific needs.</p>
+                    <button class="service-action-btn primary-btn" id="instantConsultBtn">Find Specialist</button>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Learn More Section -->
+        <section class="learn-more-section" id="learn-more" style="padding: 6rem 5%; background: white;">
+            <div class="container" style="max-width: 1100px; margin: 0 auto;">
+                <div style="text-align: center; margin-bottom: 4rem;">
+                    <h2 class="section-title">Your Pathway to Wellness</h2>
+                    <p style="color: var(--text-secondary); max-width: 700px; margin: 0 auto;">Mental health is a journey, not a destination. Learn how MindSpace supports you at every step with science-backed tools and compassionate care.</p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem;">
+                    <div class="info-card" style="padding: 2.5rem; background: var(--bg-primary); border-radius: 24px; border: 1px solid var(--border-color); transition: var(--transition);">
+                        <div style="width: 50px; height: 50px; background: white; color: var(--accent-primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; box-shadow: 0 4px 12px rgba(67, 97, 238, 0.1);">
+                            <i data-lucide="book-open"></i>
+                        </div>
+                        <h3>Scientific Basis</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.6;">Our platform utilizes Cognitive Behavioral Therapy (CBT) principles and clinical grounding techniques used by professionals worldwide.</p>
+                    </div>
+
+                    <div class="info-card" style="padding: 2.5rem; background: var(--bg-primary); border-radius: 24px; border: 1px solid var(--border-color); transition: var(--transition);">
+                        <div style="width: 50px; height: 50px; background: white; color: #2ecc71; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; box-shadow: 0 4px 12px rgba(46, 204, 113, 0.1);">
+                            <i data-lucide="shield-check"></i>
+                        </div>
+                        <h3>Privacy & Trust</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.6;">Your data is encrypted and secure. We prioritize your anonymity, allowing you to seek help with complete peace of mind.</p>
+                    </div>
+
+                    <div class="info-card" style="padding: 2.5rem; background: var(--bg-primary); border-radius: 24px; border: 1px solid var(--border-color); transition: var(--transition);">
+                        <div style="width: 50px; height: 50px; background: white; color: #f1c40f; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; box-shadow: 0 4px 12px rgba(241, 196, 15, 0.1);">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <h3>Community Support</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.6;">Access curated support groups and community wisdom to remind you that you are never alone on this path.</p>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 4rem;">
+                    <button class="primary-btn" onclick="openMoodModal()">Start Your Assessment</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Overview Section -->
+        <section class="overview-section" id="overview" style="padding: 6rem 5%; background: var(--bg-primary);">
+            <div class="container" style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                <div class="overview-text">
+                    <h2 class="section-title" style="text-align: left; margin: 0 0 1.5rem 0;">Overview</h2>
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 2rem;">MindSpace is your all-in-one companion for mental resilience. Our platform bridges the gap between self-help and professional care by providing a safe, anonymous space for students and professionals alike.</p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: center;">
+                            <i data-lucide="check-circle-2" style="color: var(--accent-primary); width: 20px;"></i>
+                            <span>Comprehensive mood tracking and analytics</span>
+                        </li>
+                        <li style="display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: center;">
+                            <i data-lucide="check-circle-2" style="color: var(--accent-primary); width: 20px;"></i>
+                            <span>AI-driven empathetic conversations</span>
+                        </li>
+                        <li style="display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: center;">
+                            <i data-lucide="check-circle-2" style="color: var(--accent-primary); width: 20px;"></i>
+                            <span>Direct access to certified professionals</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="overview-visual">
+                    <div style="background: white; padding: 1.5rem; border-radius: 30px; box-shadow: var(--glass-shadow); border: 1px solid var(--border-color);">
+                        <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&w=800&q=80" alt="Mental Clarity" style="width: 100%; border-radius: 20px;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feedback Section -->
+        <section class="feedback-section" id="feedback" style="padding: 6rem 5%; text-align: center;">
+            <div class="container" style="max-width: 800px; margin: 0 auto;">
+                <h2 class="section-title">Your Voice Matters</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 3rem;">We are constantly evolving MindSpace based on your experiences. Share your thoughts with us.</p>
+                
+                <form id="landingFeedbackForm" class="feedback-form">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <div class="input-group">
+                            <label>Name</label>
+                            <input type="text" id="feedbackName" placeholder="Your Name" required style="padding: 1rem; border-radius: 12px; border: 1px solid var(--border-color); width: 100%;">
+                        </div>
+                        <div class="input-group">
+                            <label>Email</label>
+                            <input type="email" id="feedbackEmail" placeholder="Your Email" required style="padding: 1rem; border-radius: 12px; border: 1px solid var(--border-color); width: 100%;">
+                        </div>
+                    </div>
+                    <div class="input-group" style="margin-top: 1.5rem;">
+                        <label>Your Feedback</label>
+                        <textarea id="feedbackMessage" placeholder="How was your experience?" required style="padding: 1rem; border-radius: 12px; border: 1px solid var(--border-color); width: 100%; min-height: 150px;"></textarea>
+                    </div>
+                    <button type="submit" class="blue-btn" style="width: 100%; margin-top: 2rem; padding: 1.2rem; border-radius: 12px; font-weight: 600;">Submit Feedback</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Statistics Section -->
+        <section class="india-stats-section" id="statistics">
+            <h2 class="section-title">Understanding the Landscape</h2>
+            <p class="section-subtitle">India's Mental Health Statistics</p>
+            
+            <div class="india-map-container">
+                <div class="map-visual-box" id="indiaMapWrapper">
+                    <!-- SVG map of India will be inserted here by JS -->
+                    <div id="mapLoader" class="map-loader">
+                        <i data-lucide="loader" class="loader-icon"></i>
+                        <span>Loading Interactive Map...</span>
+                    </div>
+                </div>
+                <div class="map-insights-box" id="mapStateInsights">
+                    <div class="insight-placeholder">
+                        <i data-lucide="map-pin"></i>
+                        <h3>Select a State</h3>
+                        <p>Click on any state on the map to see mental health insights for that region.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-info-card critical">
+                    <div class="stat-number">150M+</div>
+                    <p class="stat-desc">Indians need mental health care services</p>
+                    <span class="stat-source">Source: NIMHANS</span>
+                </div>
+                <div class="stat-info-card warning">
+                    <div class="stat-number">0.75</div>
+                    <p class="stat-desc">Psychiatrists per 100,000 people in India</p>
+                    <span class="stat-source">WHO Standards: 3.0</span>
+                </div>
+                <div class="stat-info-card highlight">
+                    <div class="stat-number">42.5%</div>
+                    <p class="stat-desc">Corporate employees suffer from depression/anxiety</p>
+                    <span class="stat-source">Source: ASSOCHAM</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Dashboard View (Hidden by default) -->
+    <div id="dashboardView" style="display: none;">
+        <div class="dashboard-layout">
+            <aside class="dashboard-sidebar">
+                <div class="sidebar-brand">
+                    <i data-lucide="brain"></i>
+                    <span>MindSpace Pro</span>
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="#" class="sidebar-link active" data-view="overview"><i data-lucide="layout-dashboard"></i> Overview</a>
+                    <a href="#" class="sidebar-link" data-view="stats"><i data-lucide="line-chart"></i> Mood Analytics</a>
+                    <a href="#" class="sidebar-link" data-view="history"><i data-lucide="history"></i> Life History</a>
+                    <a href="#" class="sidebar-link" data-view="settings"><i data-lucide="settings"></i> Profile Settings</a>
+                </nav>
+                <div class="sidebar-footer">
+                    <button class="back-home-btn" id="backToHomeBtn">
+                        <i data-lucide="arrow-left"></i> Landing Page
+                    </button>
+                </div>
+            </aside>
+            
+            <main class="dashboard-main">
+                <!-- Overview View -->
+                <div id="dashView-overview" class="dash-view active">
+                    <div class="dash-header">
+                        <div>
+                            <h2 id="dashWelcomeTitle">Welcome, Friend!</h2>
+                            <p id="dashJoinedDate">Member since: ...</p>
+                        </div>
+                        <div class="dash-actions">
+                            <button class="primary-btn btn-sm" id="dashNoteBtn">New Note</button>
+                            <button class="secondary-btn btn-sm" id="dashReminderBtn">Reminder</button>
+                        </div>
+                    </div>
+
+                    <div class="dash-grid-top">
+                        <div class="dash-card main-stats">
+                            <h3>Session Insights</h3>
+                            <div class="stats-row">
+                                <div class="mini-stat">
+                                    <span id="dashStatMoods">0</span>
+                                    <label>Moods</label>
+                                </div>
+                                <div class="mini-stat">
+                                    <span id="dashStatTasks">0</span>
+                                    <label>Steps</label>
+                                </div>
+                                <div class="mini-stat">
+                                    <span id="dashStatFeedback">0</span>
+                                    <label>Input</label>
+                                </div>
+                            </div>
+                            <div class="dash-chart-small">
+                                <canvas id="dashMoodChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="dash-card quick-tools">
+                            <h3>Wellness Toolkit</h3>
+                            <div class="tools-buttons">
+                                <button class="tool-btn" id="dashBreatheBtn">
+                                    <div class="tool-icon"><i data-lucide="wind"></i></div>
+                                    <span>Breathe</span>
+                                </button>
+                                <button class="tool-btn" id="dashJournalBtn">
+                                    <div class="tool-icon"><i data-lucide="book"></i></div>
+                                    <span>Journal</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dash-activity">
+                        <div class="activity-header">
+                            <h3>Activity Feed</h3>
+                            <div class="activity-filters">
+                                <span class="mini-tab active" data-tab="appointments">Appts</span>
+                                <span class="mini-tab" data-tab="journals">Journals</span>
+                                <span class="mini-tab" data-tab="notes">Notes</span>
+                                <span class="mini-tab" data-tab="reminders">Alerts</span>
+                            </div>
+                        </div>
+                        <div id="dashActivityList" class="dash-items-list">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats View -->
+                <div id="dashView-stats" class="dash-view" style="display: none;">
+                    <div class="dash-view-header">
+                        <h2>Analytics & Insights</h2>
+                        <p class="dash-subtitle">Understand your emotional patterns over time.</p>
+                    </div>
+                    
+                    <div class="premium-stats-grid">
+                        <div class="premium-stat-card">
+                            <div class="stat-icon-wrap" style="background: rgba(67, 97, 238, 0.1); color: #4361ee;"><i data-lucide="activity"></i></div>
+                            <div class="stat-content">
+                                <h3>Average Mood</h3>
+                                <div class="stat-value" id="advStatAvg">Loading...</div>
+                                <span class="stat-trend positive" id="advStatTrendAvg"><i data-lucide="trending-up"></i> Generating insights</span>
+                            </div>
+                        </div>
+                        <div class="premium-stat-card">
+                            <div class="stat-icon-wrap" style="background: rgba(46, 204, 113, 0.1); color: #2ecc71;"><i data-lucide="check-circle-2"></i></div>
+                            <div class="stat-content">
+                                <h3>Total Logs</h3>
+                                <div class="stat-value" id="advStatTotal">0</div>
+                                <span class="stat-trend neutral">All-time</span>
+                            </div>
+                        </div>
+                        <div class="premium-stat-card">
+                            <div class="stat-icon-wrap" style="background: rgba(243, 156, 18, 0.1); color: #f39c12;"><i data-lucide="bar-chart-2"></i></div>
+                            <div class="stat-content">
+                                <h3>Frequent Emotion</h3>
+                                <div class="stat-value" id="advStatFreq">-</div>
+                                <span class="stat-trend warning">Analyzed from your entries</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="premium-chart-container">
+                        <div class="chart-header-row">
+                            <h3>Focus: 15-Day Mood Trajectory</h3>
+                        </div>
+                        <div class="large-chart-box">
+                            <canvas id="dashMoodChartLarge"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- History View -->
+                <div id="dashView-history" class="dash-view" style="display: none;">
+                    <div class="dash-view-header modern-header" style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem;">
+                        <div>
+                            <h2>Life History & Activity</h2>
+                            <p class="dash-subtitle">Your personal timeline of wellness practices.</p>
+                        </div>
+                        <div class="filter-wrapper" style="position: relative;">
+                            <i data-lucide="filter" class="filter-icon" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: #64748b;"></i>
+                            <select id="historyTypeFilter" class="premium-select" style="padding: 0.8rem 1rem 0.8rem 2.5rem; border-radius: 12px; border: 1px solid #e2e8f0; background: white; font-weight: 500; font-size: 0.95rem; color: #334155; outline: none; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); cursor: pointer; appearance: none; -webkit-appearance: none;">
+                                <option value="all">All Activities</option>
+                                <option value="appointments">Consultations</option>
+                                <option value="journals">Journals</option>
+                                <option value="notes">Quick Notes</option>
+                                <option value="reminders">Reminders</option>
+                            </select>
+                            <i data-lucide="chevron-down" style="position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: #64748b; pointer-events: none;"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="premium-timeline-container">
+                        <div id="dashHistoryFullList" class="premium-timeline">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Notification Container -->
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <!-- Chatbot Window -->
+    <div class="chatbot-window" id="chatbotWindow">
+        <div class="chat-header" style="display: flex; align-items: center; justify-content: space-between;">
+            <button class="close-btn" id="closeChatBtn" style="display: flex; align-items: center; gap: 0.3rem; font-family: inherit; font-size: 0.9rem; font-weight: 600; opacity: 0.9; background: transparent; border: none; color: inherit; cursor: pointer; padding: 0;">
+                <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i> Back
+            </button>
+            <div class="chat-title" style="flex: 1; justify-content: flex-end;">
+                <div class="bot-info" style="text-align: right;">
+                    <strong>MindSpace AI</strong>
+                    <span>Compassionate Support</span>
+                </div>
+                <i data-lucide="bot" class="bot-icon" style="margin-left: 0.8rem; margin-right: 0;"></i>
+            </div>
+        </div>
+        <div class="chat-area" id="chatArea">
+            <div class="message bot-message">
+                <div class="message-content">Hello! I'm MindSpace, your AI supportive companion. How are you feeling today?</div>
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <div class="chat-suggestions" id="chatSuggestions">
+                <button class="suggest-btn" onclick="sendSuggested('How can I manage exam stress?')">Exam Stress</button>
+                <button class="suggest-btn" onclick="sendSuggested('Give me a quick breathing exercise.')">Breathing</button>
+                <button class="suggest-btn" onclick="sendSuggested('I feel lonely today.')">Loneliness</button>
+            </div>
+            <div class="input-wrapper" style="display: flex; gap: 0.8rem; width: 100%;">
+                <input type="text" id="chatInput" placeholder="How can I help you?">
+                <button id="sendMessageBtn">
+                    <i data-lucide="send"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Soundscape Widget -->
+    <div class="soundscape-widget" id="soundscapeWidget">
+        <button class="soundscape-toggle" id="soundscapeToggle" title="Atmospheric Sounds">
+            <i data-lucide="music"></i>
+        </button>
+        <div class="soundscape-menu" id="soundscapeMenu">
+            <h4>Soundscape</h4>
+            <div class="sound-option" data-sound="rain">
+                <i data-lucide="cloud-rain"></i> Smooth Rain
+            </div>
+            <div class="sound-option" data-sound="forest">
+                <i data-lucide="trees"></i> Green Forest
+            </div>
+            <div class="sound-option" data-sound="ocean">
+                <i data-lucide="waves"></i> Calm Ocean
+            </div>
+            <div class="volume-control">
+                <i data-lucide="volume-2"></i>
+                <input type="range" id="soundVolume" min="0" max="1" step="0.1" value="0.5">
+            </div>
+            <div class="sound-status" id="soundStatus">Paused</div>
+        </div>
+    </div>
+
+    <!-- SOS Floating Button (Left Side) -->
+    <button class="sos-toggle" id="sosFloatingBtn" aria-label="Emergency Help" title="Emergency SOS">
+        <i data-lucide="phone-call"></i>
+        <span class="sos-label">SOS</span>
+    </button>
+    
+    <!-- Floating Chatbot Control (Right Side) -->
+    <div class="floating-controls">
+        <button class="chatbot-toggle" id="chatbotToggleBtn" aria-label="Open Chat">
+            <i data-lucide="message-square-heart"></i>
+        </button>
+    </div>
+
+    <!-- Authentication Modals -->
+    <div class="modal" id="authModal">
+        <div class="modal-content auth-modal-content" style="max-width: 400px;">
+            <div class="auth-tabs" style="margin-bottom: 2rem; border-bottom: 2px solid #eee; display: flex;">
+                <div class="auth-tab active" id="modalLoginTab" style="flex: 1; text-align: center; padding: 1rem; cursor: pointer; font-weight: 600;">Sign In</div>
+                <div class="auth-tab" id="modalSignupTab" style="flex: 1; text-align: center; padding: 1rem; cursor: pointer; font-weight: 600;">Sign Up</div>
+            </div>
+
+            <!-- Login Form -->
+            <form id="modalLoginForm" class="auth-form active">
+                <div class="input-group" style="margin-bottom: 1.5rem;">
+                    <label>Email Address</label>
+                    <input type="email" id="loginEmail" placeholder="you@example.com" required style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid #ddd;">
+                </div>
+                <div class="input-group" style="margin-bottom: 1.5rem;">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" required style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid #ddd;">
+                </div>
+                <button type="submit" class="auth-submit" style="width: 100%; background: var(--accent-gradient); color: white; padding: 1rem; border-radius: 12px; font-weight: 600;">Welcome Back</button>
+            </form>
+
+            <!-- Signup Form -->
+            <form id="modalSignupForm" class="auth-form" style="display: none;">
+                <div class="input-group" style="margin-bottom: 1.5rem;">
+                    <label>Full Name</label>
+                    <input type="text" id="signupName" placeholder="Your name" required style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid #ddd;">
+                </div>
+                <div class="input-group" style="margin-bottom: 1.5rem;">
+                    <label>Email Address</label>
+                    <input type="email" id="signupEmail" placeholder="you@example.com" required style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid #ddd;">
+                </div>
+                <div class="input-group" style="margin-bottom: 1.5rem;">
+                    <label>Create Password</label>
+                    <input type="password" id="signupPassword" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" required style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid #ddd;">
+                </div>
+                <button type="submit" class="auth-submit" style="width: 100%; background: var(--accent-gradient); color: white; padding: 1rem; border-radius: 12px; font-weight: 600;">Start Journey</button>
+            </form>
+            
+            <button class="close-modal-btn" id="closeAuthBtn" style="margin-top: 1.5rem; width: 100%; text-align: center; color: #666; font-size: 0.9rem;">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Consultation Flow Modal (Find Doctor) -->
+    <div class="modal" id="consultationFlowModal">
+        <div class="modal-content" style="max-width: 800px; padding: 0;">
+            <div class="consult-header" style="position: relative;">
+                <button class="secondary-btn" id="backFromConsultBtn" style="position: absolute; left: 1.5rem; top: 1.5rem; padding: 0.4rem 1rem;">Back</button>
+                <h3>Specialist Consultation</h3>
+                <p>Book a private session with verified psychiatrists</p>
+                <button class="close-consult" id="closeConsultFlowBtn"><i data-lucide="x"></i></button>
+            </div>
+            
+            <!-- Step 1: Doctor List -->
+            <div id="step1DoctorList" class="consult-step">
+                <div class="doctor-search-bar" style="margin-bottom: 1.5rem; position: relative;">
+                    <i data-lucide="search" style="position: absolute; left: 1.2rem; top: 50%; transform: translateY(-50%); color: #94a3b8; width: 20px; height: 20px;"></i>
+                    <input type="text" id="doctorSearchInput" placeholder="Search conditions (e.g. Anxiety, Stress, Sleep)..." style="width: 100%; padding: 1.2rem 1rem 1.2rem 3.5rem; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 1.05rem; font-weight: 500; outline: none; transition: border-color 0.2s;">
+                </div>
+                <div class="doctor-list doctor-carousel" id="doctorList">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Step 2: Slot Selection -->
+            <div id="step2ApptSlots" class="consult-step" style="display: none;">
+                <div class="selected-doc-info">
+                    <div class="doc-avatar-large">
+                        <img id="step2DocImg" src="" alt="" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h3 id="selectedDocName">Doctor Name</h3>
+                    <p id="selectedDocSpecialty">Specialty</p>
+                </div>
+                <div class="slot-picker">
+                    <h4>Select a Time Slot</h4>
+                    <div class="slots-grid" id="slotsGrid">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+                <div class="consult-footer">
+                    <button class="secondary-btn" id="backToDoctors">Back</button>
+                    <button class="primary-btn" id="confirmConsultBtn" disabled>Confirm Appointment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Consultation Modal (Active Session) -->
+    <div class="modal" id="videoConsultationModal" style="background: rgba(15, 23, 42, 0.98); z-index: 10000; display: none;">
+        <div class="video-session-container professional-video-call">
+            <div class="video-header" style="position: absolute; top: 2rem; left: 2rem; right: 2rem; z-index: 10;">
+                <div class="live-badge flash-live" style="background: rgba(239, 68, 68, 0.9);">LIVE</div>
+                <span id="activeDocNameDisplay" style="color: white; font-weight: 600; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Consultation Session</span>
+                <span id="callTimer" style="margin-left: auto; color: white; background: rgba(0,0,0,0.4); padding: 0.3rem 0.8rem; border-radius: 20px;">00:00</span>
+            </div>
+            
+            <div class="video-grid-premium">
+                <div class="remote-video-full">
+                    <img id="doctorVideo" src="" alt="Doctor Video">
+                </div>
+                <div class="local-video-pip">
+                    <video id="userVideo" autoplay playsinline muted></video>
+                    <div class="video-name-tag">You</div>
+                </div>
+            </div>
+
+            <div class="video-controls-bar">
+                <button class="control-btn secondary" id="backFromVideoBtn" title="Back to Dashboard">
+                    <i data-lucide="chevron-left"></i>
+                </button>
+                <button class="control-btn"><i data-lucide="mic"></i></button>
+                <button class="control-btn end-call" id="endCallBtn"><i data-lucide="phone-off"></i></button>
+                <button class="control-btn"><i data-lucide="video"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Application Logic -->
+    <script src="app.js"></script>
+</body>
+</html>
